@@ -6,7 +6,7 @@ using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
 
-namespace CommonControls
+namespace CustomControls
 {
     /// <summary>
     /// リップル効果の付いたボタン
