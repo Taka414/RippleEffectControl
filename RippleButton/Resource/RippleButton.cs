@@ -28,11 +28,8 @@ namespace CustomControls
         // - - - - - - - - - - - - - - - - - - - -
 
         public static readonly DependencyProperty RippleColorProperty =
-            DependencyProperty.Register("RippleColor", typeof(Brush), typeof(RippleButton), new PropertyMetadata(Brushes.White));
-
-        public RippleButton()
-        {
-        }
+            DependencyProperty.Register("RippleColor", typeof(Brush), 
+                typeof(RippleButton), new PropertyMetadata(Brushes.White));
 
         //
         // Public Methods
@@ -60,9 +57,12 @@ namespace CustomControls
             // 円の最大の大きさ -> コントロールの大きさの倍
             double effectMaxSize = Math.Max(this.ActualWidth, this.ActualHeight) * 3;
 
-            (storyboard.Children[2] as ThicknessAnimation).From = new Thickness(mousePos.X, mousePos.Y, 0, 0);
-            (storyboard.Children[2] as ThicknessAnimation).To = new Thickness(mousePos.X - effectMaxSize / 2, mousePos.Y - effectMaxSize / 2, 0, 0);
-            (storyboard.Children[3] as DoubleAnimation).To = effectMaxSize;
+            (storyboard.Children[2] as ThicknessAnimation).From = 
+                new Thickness(mousePos.X, mousePos.Y, 0, 0);
+            (storyboard.Children[2] as ThicknessAnimation).To = 
+                new Thickness(mousePos.X - effectMaxSize / 2, mousePos.Y - effectMaxSize / 2, 0, 0);
+            (storyboard.Children[3] as DoubleAnimation).To = 
+                effectMaxSize;
 
             ellipse.BeginStoryboard(storyboard);
         }
