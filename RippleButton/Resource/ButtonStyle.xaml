@@ -17,8 +17,8 @@
                             <!-- ClickPosition Offset -->
                             <ThicknessAnimation Storyboard.TargetProperty="Margin" 
 												Duration="0:0:0.8" FillBehavior="HoldEnd"/>
-							
-                            <!-- だんだん大きくなっていくアニメーション -->
+
+                            <!-- Animation getting bigger and bigger -->
                             <DoubleAnimation Storyboard.TargetProperty="Width" 
 											 BeginTime="0:0:0" Duration="0:0:0.8" From="0" />
 							<DoubleAnimation Storyboard.TargetProperty="Opacity" 
@@ -33,14 +33,14 @@
                         </Border>
                         <!-- Ripple Effect Body -->
                         <Ellipse x:Name="CircleEffect"
-                                             HorizontalAlignment="Left"
-                                             VerticalAlignment="Top"
-                                             Opacity="0.5"
-                                             Width="0"
-                                             Panel.ZIndex="0"
-                                             Height="{Binding Path=Width, RelativeSource={RelativeSource Self}}"
-                                             Fill="{TemplateBinding RippleColor}"/>
-                    </Grid>
+                                 HorizontalAlignment="Left"
+                                 VerticalAlignment="Top"
+                                 Opacity="0.5"
+                                 Width="0"
+                                 Panel.ZIndex="0"
+                                 Height="{Binding Path=Width, RelativeSource={RelativeSource Self}}"
+                                 Fill="{TemplateBinding RippleColor}"/>
+                        </Grid>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

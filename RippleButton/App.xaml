@@ -6,7 +6,7 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <!-- 自分で定義したスタイルの取り込み -->
+                <!-- Importing self-defined styles -->
                 <ResourceDictionary Source="/Resource/ButtonStyle.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>

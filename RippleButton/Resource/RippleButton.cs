@@ -9,7 +9,7 @@ using System.Windows.Shapes;
 namespace CustomControls
 {
     /// <summary>
-    /// リップル効果の付いたボタン
+    /// Represents a button with a ripple effect.
     /// </summary>
     public class RippleButton : Button
     {
@@ -28,7 +28,7 @@ namespace CustomControls
         // - - - - - - - - - - - - - - - - - - - -
 
         public static readonly DependencyProperty RippleColorProperty =
-            DependencyProperty.Register("RippleColor", typeof(Brush), 
+            DependencyProperty.Register("RippleColor", typeof(Brush),
                 typeof(RippleButton), new PropertyMetadata(Brushes.White));
 
         //
@@ -39,30 +39,27 @@ namespace CustomControls
         {
             base.OnApplyTemplate();
 
-            this.AddHandler(MouseDownEvent, new RoutedEventHandler(this.OnMouseDown));
+            AddHandler(MouseDownEvent, new RoutedEventHandler(OnMouseDown));
         }
 
         public void OnMouseDown(object sender, RoutedEventArgs e)
         {
-            // クリック位置からRippleの中心を取る
+            // Take the center of the Ripple from the click position
             Point mousePos = (e as MouseButtonEventArgs).GetPosition(this);
 
-            var ellipse = this.GetTemplateChild("CircleEffect") as Ellipse;
+            var ellipse = GetTemplateChild("CircleEffect") as Ellipse;
 
             ellipse.Margin = new Thickness(mousePos.X, mousePos.Y, 0, 0);
 
-            // アニメーションの動作の指定
-            Storyboard storyboard = (this.FindResource("RippleAnimation") as Storyboard).Clone();
+            // Specify animation behavior
+            Storyboard storyboard = (FindResource("RippleAnimation") as Storyboard).Clone();
 
-            // 円の最大の大きさ -> コントロールの大きさの倍
-            double effectMaxSize = Math.Max(this.ActualWidth, this.ActualHeight) * 3;
+            // Maximum size of the circle -> Double the size of the control
+            double effectMaxSize = Math.Max(ActualWidth, ActualHeight) * 3;
 
-            (storyboard.Children[2] as ThicknessAnimation).From = 
-                new Thickness(mousePos.X, mousePos.Y, 0, 0);
-            (storyboard.Children[2] as ThicknessAnimation).To = 
-                new Thickness(mousePos.X - effectMaxSize / 2, mousePos.Y - effectMaxSize / 2, 0, 0);
-            (storyboard.Children[3] as DoubleAnimation).To = 
-                effectMaxSize;
+            (storyboard.Children[2] as ThicknessAnimation).From = new Thickness(mousePos.X, mousePos.Y, 0, 0);
+            (storyboard.Children[2] as ThicknessAnimation).To = new Thickness(mousePos.X - effectMaxSize / 2, mousePos.Y - effectMaxSize / 2, 0, 0);
+            (storyboard.Children[3] as DoubleAnimation).To = effectMaxSize;
 
             ellipse.BeginStoryboard(storyboard);
         }

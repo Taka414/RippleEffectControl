@@ -6,7 +6,7 @@ namespace CustomControls
     {
         public TestEffectWindow()
         {
-            this.InitializeComponent();
+            InitializeComponent();
         }
     }
 }
