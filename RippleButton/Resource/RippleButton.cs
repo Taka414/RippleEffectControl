@@ -19,8 +19,8 @@ namespace CustomControls
 
         public Brush RippleColor
         {
-            get { return (Brush)GetValue(RippleColorProperty); }
-            set { SetValue(RippleColorProperty, value); }
+            get => (Brush)GetValue(RippleColorProperty);
+            set => SetValue(RippleColorProperty, value);
         }
 
         //
@@ -39,7 +39,8 @@ namespace CustomControls
         {
             base.OnApplyTemplate();
 
-            AddHandler(MouseDownEvent, new RoutedEventHandler(OnMouseDown));
+            // React to all without specifying the use here
+            AddHandler(PreviewMouseDownEvent, new RoutedEventHandler(OnMouseDown));
         }
 
         public void OnMouseDown(object sender, RoutedEventArgs e)
