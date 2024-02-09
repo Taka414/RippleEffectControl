@@ -40,7 +40,7 @@ namespace CustomControls
             base.OnApplyTemplate();
 
             // React to all without specifying the use here
-            AddHandler(PreviewMouseDownEvent, new RoutedEventHandler(OnMouseDown));
+            this.AddHandler(MouseDownEvent, new RoutedEventHandler(this.OnMouseDown), true);
         }
 
         public void OnMouseDown(object sender, RoutedEventArgs e)
